@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friso Digital - Temáticas Ambientales</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #2c5530;
+            --color-secondary: #4CAF50;
+            --color-accent: #81C784;
+            --color-background: #f0f8f0;
+            --color-card: #ffffff;
+            --color-text: #333333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--color-secondary);
+        }
+
+        .friso {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .tema {
+            background-color: var(--color-card);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tema:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .tema::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+        }
+
+        .tema h2 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .tema h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+
+        .tema img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .tema:hover img {
+            transform: scale(1.02);
+        }
+
+        .concepto {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+        }
+
+        .concepto h3 {
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .aporte {
+            background-color: var(--color-accent);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .aporte h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .friso {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .tema {
+                padding: 20px;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tema {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .tema:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .tema:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .tema:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <header class="header">
+                <div class="header-content">
+                    <h1>Friso Digital - Temáticas Ambientales</h1>
+                    <div class="author-info">
+                        <i class="fas fa-user-graduate"></i>
+                        <p>Realizado por: <span>Brandon Buitrago</span></p>
+                        <p>Curso: <span>1102</span> - Jornada Tarde</p>
+                        <p>Trabajo EMF</p>
+                    </div>
+                    <p class="subtitle">Explora las interconexiones entre el cambio climático, la biodiversidad y la alimentación sostenible</p>
+                    
+                    <div class="search-container">
+                        <div class="search-wrapper">
+                            <input type="text" id="search-input" placeholder="Buscar temas...">
+                            <button id="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
+                        <button class="theme-toggle" id="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <main>
+                <div class="friso" id="friso-container">
+                    <!-- Los temas se cargarán dinámicamente con JavaScript -->
+                </div>
+                
+                <div id="no-results-message" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <p>No se encontraron temas que coincidan con tu búsqueda.</p>
+                </div>
+            </main>
+        </div>
+        
+        <!-- Modal para ver detalles -->
+        <div class="modal" id="tema-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <!-- El contenido del modal se cargará dinámicamente -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notificación -->
+        <div class="notification" id="notification"></div>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Desarrollado con <i class="fas fa-heart"></i> para la educación ambiental</p>
+                    <p class="copyright">© 2025 Brandon Buitrago - EMF</p>
+                </div>
+                <div class="eco-icons">
+                    <span title="Educación Ambiental"><i class="fas fa-seedling"></i></span>
+                    <span title="Protección del Planeta"><i class="fas fa-globe-americas"></i></span>
+                    <span title="Energía Renovable"><i class="fas fa-solar-panel"></i></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Script de JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 
